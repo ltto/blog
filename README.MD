@@ -1,4 +1,4 @@
-## 同步github Markdown的博客框架
+## Golang编写的 博客框架(同步Markdown文件)
 > 通过构建github上的Markdown文件进行博客搭建的通用模板
 >
 > Markdown文件架构参照 [MarkEditor](https://www.markeditor.com/)
