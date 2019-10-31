@@ -1,0 +1,14 @@
+#MAC OS
+**/.DS_Store
+#vscode
+**/.vscode/
+#ide
+.idea
+**/.idea
+**/*.iml
+
+
+#develop
+main
+vendor
+gitFile

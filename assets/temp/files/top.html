@@ -1,0 +1,40 @@
+{{$base:=.base}}
+{{$navs:=.navs}}
+<div id="header" class="mod-header">
+    <h1 class="site-title"><a href="#">I Want To Change Now!</a></h1>
+    <div class="mod-nav">
+        <script type="text/javascript" src="{{$base}}/static/jquery.smartmenus.js"></script>
+        <link href="{{$base}}/static/sm-core-css.css" type="text/css" rel="stylesheet">
+        <link href="{{$base}}/static/sm-base.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="{{$base}}/static/run.js"></script>
+        <link href="{{$base}}/static/nav.css" type="text/css" rel="stylesheet">
+        <div class="bitcron_nav_container">
+            <div class="menu_toggle">
+                <input type="checkbox" class="menu_state">
+                <label class="menu_btn">
+                    <span class="menu_btn_icon">Toggle main menu visibility</span>
+                </label>
+                <style type="text/css">
+                    @media (max-width: 767px) {
+                        .bitcron_nav {
+                            display: none;
+                        }
+                    }
+                </style>
+            </div>
+            <div class="bitcron_nav">
+                <div class="mixed_site_nav_wrap site_nav_wrap">
+                    <ul class="mixed_site_nav site_nav sm sm-base">
+                        <li><a href="{{$base}}/index" class=" nav__item">首页</a></li>
+                        {{range $i,$v :=  $navs}}
+                            <li><a href="{{$base}}/index?nav={{$v}}" class=" nav__item">{{$v}}</a></li>
+                        {{end}}
+                        <li><a href="{{$base}}/archive" class=" nav__item">归档</a></li>
+                    </ul>
+                    <div class="clear clear_nav_inline_end"></div>
+                </div>
+            </div>
+            <div class="clear clear_nav_end"></div>
+        </div>
+    </div>
+</div>

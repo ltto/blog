@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{template "head.html"}}
+    <title>spring bean循环依赖处理</title>
+</head>
+
+<body class="page-home">
+<div id="header" class="mod-header">
+    <h1 class="site-title"><a href="https://qianxiaoxiao.bitcron.com/?status=loaded">I Want To Change Now!</a></h1>
+    <div class="mod-nav">
+        <script type="text/javascript" src="static/jquery.smartmenus.js"></script>
+        <link href="static/sm-core-css.css" type="text/css" rel="stylesheet">
+        <link href="static/sm-base.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="static/run.js"></script>
+        <link href="static/nav.css" type="text/css" rel="stylesheet">
+        <div class="bitcron_nav_container">
+            <div class="menu_toggle">
+                <input type="checkbox" id="d_c58fb6007a6d48bd82457e8c3c7f26b8_nav" class="menu_state">
+                <label for="d_c58fb6007a6d48bd82457e8c3c7f26b8_nav" class="menu_btn">
+                    <span class="menu_btn_icon">                        Toggle main menu visibility</span>
+                </label>
+                <style type="text/css">@media (max-width: 767px) {
+                        .bitcron_nav {
+                            display: none;
+                        }
+                    }
+
+
+                </style>
+            </div>
+            <div class="bitcron_nav">
+                <div class="mixed_site_nav_wrap site_nav_wrap">
+                    <ul class="mixed_site_nav site_nav sm sm-base" data-smartmenus-id="15723199291675854">
+                        <li><a id="daf3ffe44f9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/" class=" nav__item">首页</a></li>
+                        <li><a id="daf4012daf9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/clouds" class=" nav__item">Clouds</a></li>
+                        <li><a id="daf4025eaf9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/i&amp;o" class=" nav__item">I&amp;O</a></li>
+                        <li><a id="daf4038aaf9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/jdk11" class=" nav__item">JDK11</a></li>
+                        <li><a id="daf404b38f9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/jvm" class=" nav__item">JVM</a></li>
+                        <li><a id="daf405d9ef9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/mysql" class=" nav__item">MySQL</a></li>
+                        <li><a id="daf406fe6f9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/devtools" class=" nav__item">devTools</a></li>
+                        <li><a id="daf40822ef9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/golang" class=" nav__item">golang</a></li>
+                        <li><a id="daf40950cf9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/http" class=" nav__item">http</a></li>
+                        <li><a id="daf40a74af9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/java" class=" nav__item">java</a></li>
+                        <li><a id="daf40b94cf9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/linux" class=" nav__item">linux</a></li>
+                        <li><a id="daf40cb76f9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/redis" class=" nav__item">redis</a></li>
+                        <li><a id="daf40de7cf9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/spring" class=" nav__item">spring</a></li>
+                        <li><a id="daf40f092f9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/category/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" class=" nav__item">设计模式</a></li>
+                        <li><a id="daf41029ef9fc11e9b39d0242ac110005" href="https://qianxiaoxiao.bitcron.com/archive" class=" nav__item">归档</a></li>
+                    </ul>
+                    <div class="clear clear_nav_inline_end"></div>
+                </div>
+            </div>
+            <div class="clear clear_nav_end"></div>
+        </div>
+    </div>
+</div>
+<div id="main" class="main">
+    <div class="pure-g">
+        <div class="pure-u-23-24 pure-u-md-17-24 layout">
+            <div class="detail-page">
+                <div class="mod-article mod-post">
+                    <div class="post-meta">
+                        <time datetime="July 17, 2019" pubdate="pubdate" class="post-date">
+                            <span class="post-m">Jul</span>
+                            <span class="post-d">17</span>
+                            <span class="post-y">2019</span>
+                        </time>
+                    </div>
+                    <div class="post-main">
+                        <h2 class="article-title">文章title</h2>
+                        <div class="post-metas">
+                            <span class="count"><i class="fa fa-book"></i><span>0</span></span>
+                        </div>
+
+                        <div class="entry markdown">
+                            <a href="#">
+                                <h1>这里是正文</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <link href="static/style2.css" type="text/css" rel="stylesheet">
+            <div class="doc_comments">
+                <div class="doc_comments_wrapper">
+                    <div class="comments_block_title">发表评论</div>
+                    <div class="new_comment_form_container">
+                        <form id="new_comment_form" method="post" action="https://qianxiaoxiao.bitcron.com/service/comment/new">
+                            <input name="path" type="hidden" value="spring/spring循环依赖.md">
+                            <input id="reply_to_id" name="reply" type="hidden" value="">
+                            <div class="comment_trigger">
+                                <div class="avatar"><img src="static/visitor.png">
+                                </div>
+                                <div class="trigger_title">撰写评论</div>
+                            </div>
+                            <div class="new_comment"><textarea name="content" rows="2" class="textarea_box"></textarea>
+                                <span class="comment_error"></span>
+                            </div>
+                            <div class="comment_triggered">
+                                <div class="input_body">
+                                    <ul class="ident">
+                                        <li>
+                                            <input type="text" name="author" placeholder="昵称">
+                                        </li>
+                                        <li>
+                                            <input type="text" name="email" placeholder="邮箱">
+                                        </li>
+                                        <li>
+                                            <input type="text" name="site" placeholder="网站">
+                                        </li>
+                                    </ul>
+                                    <input type="submit" value="提交评论" class="comment_submit_button c_button">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="comments">
+                    </ul>
+
+                    <script type="text/javascript" src="static/js.cookie.js"></script>
+                    <script type="text/javascript" src="static/jquery.textcomplete.min.js"></script>
+                    <script type="text/javascript" src="static/script.js"></script>
+
+                    <script>
+                      var people = [
+                        "121172722"
+                      ]
+                    </script>
+
+                    <script>
+                      $(".new_comment textarea").textcomplete([{
+                        match: /@(\S*)$/,
+                        search: function (term, callback) {
+                          callback($.map(people, function (person) {
+                            return person.indexOf(term) == 0 ? person : null
+                          }))
+                        },
+                        replace: function (value) {
+                          if (value.indexOf(' ') != '-1') {
+                            return '@' + value + ', ';
+                          } else {
+                            return '@' + value + ' ';
+                          }
+                        },
+                        index: 1
+                      }]);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer" class="mod-footer">
+    <div class="contact"></div>
+    <div class="copyright"><span>Powered by</span>
+        <a href="https://www.bitcron.com/" target="_blank">Bitcron</a>
+        <span>Theme by</span>
+        <a href="https://www.sollrei.me/">Sollrei</a>
+    </div>
+</footer>
+<script type="text/javascript" src="static/particles.js"></script>
+<script type="text/javascript" src="static/index.js"></script>
+</body>
+</html>

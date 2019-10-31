@@ -1,0 +1,12 @@
+{
+  "server": {
+    "port": 8080,
+    "base": "/blog",
+    "static": "assets/temp/files/static",
+    "html": "assets/temp/files/*.html"
+  },
+  "blog": {
+    "dir": "gitFile",
+    "git": "https://github.com/ltto/mblog"
+  }
+}

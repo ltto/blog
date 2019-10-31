@@ -1,0 +1,120 @@
+{{$base:=.base}}
+{{$title:=.title}}
+{{$markdow:=.content}}
+{{$navStr:=.navStr}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{template "head.html" .}}
+    <title>Blog - {{$title}}</title>
+</head>
+<body class="page-home">
+
+{{template "top.html" .}}
+
+<div id="main" class="main">
+    <div class="pure-g">
+        <div class="pure-u-23-24 pure-u-md-17-24 layout">
+            <div class="detail-page">
+                <div class="mod-article mod-post">
+                    <div class="post-meta">
+                        <time datetime="July 17, 2019" pubdate="pubdate" class="post-date">
+                            <span class="post-m">Jul</span>
+                            <span class="post-d">17</span>
+                            <span class="post-y">2019</span>
+                        </time>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                    <div class="post-main">
+                        <!-- title -->
+                        <h2 id="title" class="article-title">{{$title}}</h2>
+                        <!-- title end -->
+                        <div class="post-metas">
+                            <span class="count"><i class="fa fa-book"></i><span>0</span></span>
+                        </div>
+                        <base href="{{$base}}/img/{{$navStr}}/">
+                        <div id="cen" class="entry markdown">
+                            <!--正文-->
+
+                            <!--正文 end-->
+                        </div>
+                        <script src="{{$base}}/static/highlight.pack.js"></script>
+                        <script>
+                          $('#cen').html(marked({{$markdow}}));
+                          hljs.initHighlightingOnLoad();
+                        </script>
+                        <script>
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <link href="{{$base}}/static/style2.css" type="text/css" rel="stylesheet">
+            <div class="doc_comments">
+                <div class="doc_comments_wrapper">
+                    <div class="comments_block_title">发表评论</div>
+                    <div class="new_comment_form_container">
+                        <form id="new_comment_form" method="post" action="https://qianxiaoxiao.bitcron.com/service/comment/new">
+                            <input name="path" type="hidden" value="spring/spring循环依赖.md">
+                            <input id="reply_to_id" name="reply" type="hidden" value="">
+                            <div class="comment_trigger">
+                                <div class="avatar"><img src="{{$base}}/static/visitor.png">
+                                </div>
+                                <div class="trigger_title">撰写评论</div>
+                            </div>
+                            <div class="new_comment"><textarea name="content" rows="2" class="textarea_box"></textarea>
+                                <span class="comment_error"></span>
+                            </div>
+                            <div class="comment_triggered">
+                                <div class="input_body">
+                                    <ul class="ident">
+                                        <li>
+                                            <input type="text" name="author" placeholder="昵称">
+                                        </li>
+                                        <li>
+                                            <input type="text" name="email" placeholder="邮箱">
+                                        </li>
+                                        <li>
+                                            <input type="text" name="site" placeholder="网站">
+                                        </li>
+                                    </ul>
+                                    <input type="submit" value="提交评论" class="comment_submit_button c_button">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="comments">
+                    </ul>
+                    <script type="text/javascript" src="{{$base}}/static/js.cookie.js"></script>
+                    <script type="text/javascript" src="{{$base}}/static/jquery.textcomplete.min.js"></script>
+                    <script type="text/javascript" src="{{$base}}/static/script.js"></script>
+                    <script>
+                      var people = [
+                        "121172722"
+                      ]
+                    </script>
+                    <script>
+                      $(".new_comment textarea").textcomplete([{
+                        match: /@(\S*)$/,
+                        search: function (term, callback) {
+                          callback($.map(people, function (person) {
+                            return person.indexOf(term) == 0 ? person : null
+                          }))
+                        },
+                        replace: function (value) {
+                          if (value.indexOf(' ') != '-1') {
+                            return '@' + value + ', ';
+                          } else {
+                            return '@' + value + ' ';
+                          }
+                        },
+                        index: 1
+                      }]);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "down.html" .}}
+</body>
+</html>

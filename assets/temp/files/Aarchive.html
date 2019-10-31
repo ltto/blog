@@ -1,0 +1,40 @@
+{{$base:=.base}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{template "head.html" .}}
+    <title>I Want To Change Now!</title>
+</head>
+<body class="page-home">
+
+{{template "top.html" .}}
+
+<div id="main" class="main">
+    <div class="pure-g">
+        <div class="pure-u-23-24 pure-u-md-17-24 layout">
+            <h2 class="archive-title">归档</h2>
+            <div class="mod-archive">
+                <div class="archive">
+                    {{range $index,$links:= .yLinks}}
+                        <div class="archive-year">{{$index}}</div>
+                        <ul class="archive-list">
+                            {{range $i ,$v:= $links}}
+                                <li class="post-item">
+                                    <span class="date">{{$v.M}}.{{$v.D}} {{$v.Y}}</span>
+                                    <a href="{{$base}}/content/{{$v.Nav}}/{{$v.FileName}}" title="{{$v.Title}}">{{$v.Title}}</a>
+                                </li>
+                            {{end}}
+                        </ul>
+                    {{end}}
+                </div>
+            </div>
+            <div class="paginator pager pagination no_pages">
+                <div class="paginator_container pagination_container">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "down.html" .}}
+</body>
+</html>

@@ -1,0 +1,61 @@
+{{$base:=.base}}
+{{$links:=.links}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{template "head.html" .}}
+    <title>I Want To Change Now!</title>
+</head>
+<body class="page-home">
+
+{{template "top.html" .}}
+
+<div class="mod-banner">
+    <div style="background-image: url({{$base}}/static/5.jpg)" id="particles-js" class="banner">
+        <canvas class="particles-js-canvas-el" width="1857" height="500" style="width: 100%; height: 100%;"></canvas>
+    </div>
+</div>
+<div id="main" class="main">
+    <div class="pure-g">
+        <div class="pure-u-23-24 pure-u-md-17-24 layout">
+            <div class="post-list">
+                <!-- cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell -->
+                {{range $i ,$v:= $links}}
+                    <div class="mod-post">
+                        <div class="post-meta">
+                            <time datetime="August 15, 2019" pubdate="pubdate" class="post-date">
+                                <span class="post-m">{{$v.M}}</span>
+                                <span class="post-d">{{$v.D}}</span>
+                                <span class="post-y">{{$v.Y}}</span>
+                            </time>
+                        </div>
+                        <div class="post-main">
+                            <h3 class="post-title">
+                                <a href="{{$base}}/content/{{$v.Nav}}/{{$v.FileName}}" title="{{$v.Title}}">{{$v.Title}}</a>
+                            </h3>
+                            <div class="post-content markdown">
+                                {{range $ii,$vv:=$v.Desc}}
+                                    <div class="p_part"><p>{{$vv}}</p></div>
+                                {{end}}
+                            </div>
+                            <div class="post-info">
+                                <span class="count"><i class="fa fa-book"></i><span>{{$v.Change}}</span></span>
+                            </div>
+                        </div>
+                    </div>
+                {{end}}
+                <!-- cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell cell -->
+            </div>
+            <div class="paginator pager pagination">
+                <div class="paginator_container pagination_container">
+                    {{/*<a href="#" class="btn pre newer-posts newer_posts">« Prev</a>*/}}
+                    {{/*<a href="#" class="btn next older-posts older_posts">Next »</a>*/}}
+                    <div style="clear:both;height:0;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "down.html" .}}
+</body>
+</html>
