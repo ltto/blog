@@ -1,35 +1,35 @@
 package web
 
 import (
-	"blog/mvc/zz"
-	"blog/mvc/zz/ctx"
 	"blog/system"
 	"blog/tools"
 	"blog/tools/conf"
 	"html/template"
 	"io/ioutil"
 	"path"
+
+	"github.com/ltto/T/www"
 )
 
 func Str2html(raw string) template.HTML {
 	return template.HTML(raw)
 }
 
-var SysConf = func(c *ctx.Context) *zz.InterceptErr {
-	c.AddHtmlParam("navs", conf.Nav.Navs())
-	c.AddHtmlParam("base", system.Conf.Server.Base)
-	return zz.NewInterceptOK()
+var SysConf = func(c *www.Context) *www.InterceptErr {
+	c.AddCParam("navs", conf.Nav.Navs())
+	c.AddCParam("base", system.Conf.Server.Base)
+	return www.NewInterceptOK()
 }
 
 func init() {
-	zz.AddInterceptor(SysConf)
-	zz.Engine.SetFuncMap(map[string]interface{}{
+	www.AddInterceptor(SysConf)
+	www.Engine.SetFuncMap(map[string]interface{}{
 		"str2html": Str2html,
 	})
-	zz.Engine.Static(tools.BaseAdd("/static"), system.Conf.Server.Static)
-	zz.Engine.LoadHTMLGlob(system.Conf.Server.HTML)
+	www.Engine.Static(tools.BaseAdd("/static"), system.Conf.Server.Static)
+	www.Engine.LoadHTMLGlob(system.Conf.Server.HTML)
 
-	zz.GetMapping(tools.BaseAdd("/index"), func(c *ctx.Context) interface{} {
+	www.GetMapping(tools.BaseAdd("/index"), func(c *www.Context) interface{} {
 		nav := c.Query("nav")
 		var links []*conf.BlogInfo
 		if nav == "" {
@@ -37,30 +37,30 @@ func init() {
 		} else {
 			links = conf.Nav.Links(nav)
 		}
-		c.AddHtmlParam("links", links)
+		c.AddCParam("links", links)
 		return "Aindex"
 	})
-	zz.GetMapping(tools.BaseAdd("/archive"), func(c *ctx.Context) interface{} {
-		c.AddHtmlParam("yLinks", conf.YearBlog)
+	www.GetMapping(tools.BaseAdd("/archive"), func(c *www.Context) interface{} {
+		c.AddCParam("yLinks", conf.YearBlog)
 		return "Aarchive"
 	})
-	zz.GetMapping(tools.BaseAdd("/content/:nav/:file"), func(c *ctx.Context) interface{} {
+	www.GetMapping(tools.BaseAdd("/content/:nav/:file"), func(c *www.Context) interface{} {
 		nav := c.Param("nav")
 		filename := c.Param("file")
 		file, err := ioutil.ReadFile(path.Join(conf.Nav.Dir, nav, filename))
 		if err != nil {
 			panic(err)
 		}
-		c.AddHtmlParam("navStr", nav)
-		c.AddHtmlParam("content", string(file))
-		c.AddHtmlParam("title", tools.PathToName(filename))
+		c.AddCParam("navStr", nav)
+		c.AddCParam("content", string(file))
+		c.AddCParam("title", tools.PathToName(filename))
 		return "Acontent"
 	})
 
-	zz.GetMapping(tools.BaseAdd("/img/:nav/_image/:path/:file"), func(c *ctx.Context) interface{} {
+	www.GetMapping(tools.BaseAdd("/img/:nav/_image/:path/:file"), func(c *www.Context) interface{} {
 		pathS := c.Param("path")
 		nav := c.Param("nav")
 		file := c.Param("file")
-		return zz.HTTP_IMG + path.Join(conf.Nav.Dir, nav, "_image", pathS, file)
+		return www.HttpImg + path.Join(conf.Nav.Dir, nav, "_image", pathS, file)
 	})
 }
