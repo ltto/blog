@@ -38,11 +38,11 @@ func init() {
 			links = conf.Nav.Links(nav)
 		}
 		c.AddCParam("links", links)
-		return "Aindex"
+		return "Aindex.html"
 	})
 	www.GetMapping(tools.BaseAdd("/archive"), func(c *www.Context) interface{} {
 		c.AddCParam("yLinks", conf.YearBlog)
-		return "Aarchive"
+		return "Aarchive.html"
 	})
 	www.GetMapping(tools.BaseAdd("/content/:nav/:file"), func(c *www.Context) interface{} {
 		nav := c.Param("nav")
@@ -54,7 +54,7 @@ func init() {
 		c.AddCParam("navStr", nav)
 		c.AddCParam("content", string(file))
 		c.AddCParam("title", tools.PathToName(filename))
-		return "Acontent"
+		return "Acontent.html"
 	})
 
 	www.GetMapping(tools.BaseAdd("/img/:nav/_image/:path/:file"), func(c *www.Context) interface{} {
