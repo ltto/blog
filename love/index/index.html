@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>老大我再也不吼你了</title>
+
+    <style type="text/css">
+        @font-face {
+            font-family: digit;
+            src: url('digital-7_mono.ttf') format("truetype");
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ecc;
+            font-size: 12px;
+            overflow: auto;
+        }
+    </style>
+
+    <link href="css/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+
+<div id="mainDiv">
+    <div id="content">
+        <div id="code">
+            <span class="comments"></span>
+            <span class="space"></span><span class="comments">*2013—05-12,</span><br/>
+            <span class="space"></span><span class="comments">*2013-05-14.我们单招 的日子</span><br/>
+            <span class="space"></span><span class="comments">*/</span>
+            那 时 . . . . . . <br>
+            <span class="keyword">初识 你这个小丫头...呵 呵...；　</span> <br/>
+            <span class="keyword"> 当 时 </span> 你 对 我 们 说 过 <br/>
+            <span class="comments">// 以 后 不 管 怎 么 样<br>都 要   好 好 努 力  </span><br/>
+            <span class="comments">// 当 时 玩 累 了   就 笑 ， 笑 的 都 好 像 傻 瓜<br>(*^__^*) 嘻 嘻 …….</span><br/>
+            不 知 不 觉;<br/>
+            <span class="comments">// 我 们 在 大 学 半 年 时 光 过 去 了.</span><br/>
+            有 时 候 . . . 真 的 想 回 去 ;<br/>
+            <span class="comments">//高 三 也 好 ，暑 假 也 罢.</span><br/>
+            呵呵； 说 的 有 点 不 着 边 了 ;<br/>
+            <span class="comments">// 这 一 年 .</span><br/>
+            <span class="comments">// 这 些 年 .       </span><br/>
+            <span class="keyword">谢谢 你</span> 让我认识你<span class="keyword"> <br> 一 个 可 爱 的 你</span>;<br/>
+            <span class="keyword">忘 记 你 </span>比 预 想 不 容 易<span class="keyword"> 那 就 感 谢 这 一 路 上 有 你 </span>;<br/>
+            <span class="placeholder"/><span class="comments">// 我 也 许 错 过 了 什 么 </span><br/>
+            <span class="placeholder"/><span class="comments">// 不过. 悄 悄 地 ........</span><br/>
+		    <span class="placeholder"/>哪 怕 传 来 一 个 微 笑 的 符 号；<br/>    我 都 不 舍 得 删 掉 ;
+            <span class="comments">
+            <br>
+            // 我想用这种方法向你诉说。
+        </span><br/>
+            <br>
+            在...最后；<br/>
+            大背心,每天快快乐乐啊哦(⊙o⊙)！！！;<br/>
+            <b>我这里网页就全部结束了。 希望你的快乐永远不会结束 </b>
+        </div>
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages">
+                    老大，今天我们相识&nbsp;...
+                    <div id="elapseClock"></div>
+                </div>
+                <div id="loveu">
+                    只希望你每天都开开心心的<br/>
+                    <div class="signature">- 刘桐敬上</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+    var together = new Date();
+    together.setFullYear(2013, 5, 12);
+    together.setHours(20);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
+
+    if (!document.createElement('canvas').getContext) {
+        var msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML = "Your browser doesn't support HTML5! \n Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+        document.body.appendChild(msg);
+        $("#code").css("display", "none")
+        $("#copyright").css("position", "absolute");
+        $("#copyright").css("bottom", "10px");
+        document.execCommand("stop");
+    } else {
+        setTimeout(function () {
+            startHeartAnimation();
+        }, 5000);
+
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+
+        adjustCodePosition();
+        $("#code").typewriter();
+    }
+</script>
+<div style="text-align:center;clear:both"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Forever And Always</title>
+    <script src="index/js/jsized.snow.min.js" type="text/jscript"></script>
+    <link rel="stylesheet" type="text/css" href="index/css/default.css">
+    <script>createSnow('', 60);</script>
+    <style>
+        @media (min-width: 1000px) {
+            #iframe {
+                margin: 100px auto;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            #iframe {
+                margin: 0 auto;
+            }
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 150%;
+        }
+
+        #iframe {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body id="gogo" style="background-color:#ecc;">
+<audio autoplay="autoplay" loop="loop" preload="auto"
+       src="ss.mp3">
+    你的浏览器版本太低，不支持audio标签
+</audio>
+<div id="iframe">
+    <iframe frameborder="0" scrolling="no" src="index/index.html" width="100%" height="100%">
+    </iframe>
+</div>
+</body>
+</html>
